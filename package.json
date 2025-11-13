@@ -1,0 +1,11 @@
+{
+  "name": "mde-web",
+  "version": "1.0.0",
+  "description": "Scaffold completo para um painel web que lista NF-e, permite manifestar ciência e baixar XMLs usando a biblioteca `node-mde`.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

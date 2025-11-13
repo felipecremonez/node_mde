@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  backend:
+    build: ./backend
+    env_file: ./backend/.env.example
+    volumes:
+      - ./backend/certs:/usr/src/app/certs:ro
+    ports:
+      - '4000:4000'
+  frontend:
+    build: ./frontend
+    ports:
+      - '3000:80'
