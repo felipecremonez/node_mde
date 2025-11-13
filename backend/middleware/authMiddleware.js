@@ -1,0 +1,23 @@
+// backend/middleware/authMiddleware.js
+import jwt from "jsonwebtoken";
+
+const JWT_SECRET = process.env.JWT_SECRET || "dev_secret";
+
+export default function authMiddleware(req, res, next) {
+  const auth = req.headers.authorization;
+  if (!auth) return res.status(401).json({ error: "Não autorizado" });
+
+  const parts = auth.split(" ");
+  if (parts.length !== 2)
+    return res.status(401).json({ error: "Formato do token inválido" });
+
+  const token = parts[1];
+
+  try {
+    const payload = jwt.verify(token, JWT_SECRET);
+    req.user = payload;
+    next();
+  } catch (err) {
+    return res.status(401).json({ error: "Token inválido" });
+  }
+}
